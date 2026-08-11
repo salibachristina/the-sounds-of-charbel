@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Sounds of Charbel™</title>
+<style>
+:root {
+  --bg:#090909; --panel:#111; --gold:#d6b36a; --gold2:#f0d99a;
+  --text:#f4f1e8; --muted:#aaa59b; --line:#2a261e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#17130c 0,#090909 42%,#050505 100%);
+color:var(--text);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
+.wrap{max-width:720px;margin:auto;padding:28px 18px 60px}
+.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.kicker{letter-spacing:.28em;color:var(--gold);font:12px Arial,sans-serif;text-transform:uppercase}
+h1{font-size:clamp(42px,12vw,78px);line-height:.92;margin:20px 0 14px;letter-spacing:-.04em}
+.subtitle{color:var(--muted);font:14px Arial,sans-serif;letter-spacing:.08em}
+.btn{display:inline-block;margin:30px auto 0;padding:14px 22px;border:1px solid var(--gold);
+border-radius:999px;color:var(--gold2);text-decoration:none;font:700 12px Arial,sans-serif;
+letter-spacing:.16em;text-transform:uppercase}
+.section-title{text-align:center;margin:30px 0 22px}
+.section-title span{display:block;color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px}
+.section-title h3{font-size:30px;margin:0}
+.sound-card{display:flex;gap:16px;background:linear-gradient(145deg,#151515,#0e0e0e);
+border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 10px 30px #0008}
+.num{color:var(--gold);font:12px Arial,sans-serif;letter-spacing:.1em;padding-top:3px;min-width:28px}
+.sound-info{flex:1}
+.sound-info h2{font-size:19px;margin:0 0 6px}
+.sound-info p{color:var(--muted);font:13px Arial,sans-serif;line-height:1.45;margin:0 0 14px}
+audio{width:100%;height:38px;filter:sepia(1) saturate(.5)}
+.stats{margin-top:50px;background:#0d0d0d;border:1px solid var(--line);border-radius:22px;padding:25px 20px}
+.stat{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);
+font:14px Arial,sans-serif}
+.stat:last-child{border-bottom:0}
+.stat b{color:var(--gold2);font-size:16px;text-align:right}
+.conclusion{text-align:center;margin:28px 4px 0;padding-top:24px;border-top:1px solid var(--line)}
+.conclusion .label{color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase}
+.conclusion p{color:#d5d0c5;line-height:1.65;font-size:15px}
+.diagnosis{font-size:21px;color:var(--gold2);font-weight:bold}
+.footer{text-align:center;color:#6e6a62;font:10px Arial,sans-serif;letter-spacing:.14em;margin-top:50px}
+@media(max-width:480px){.sound-card{padding:15px} h1{font-size:48px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+  <div class="kicker">An exclusive audio collection</div>
+  <h1>THE SOUNDS<br>OF CHARBEL™</h1>
+  <div class="subtitle">Recorded. Analyzed. Unfortunately documented.</div>
+  <a class="btn" href="#sounds">Enter the sound lab</a>
+</section>
+
+<section id="sounds">
+  <div class="section-title"><span>Audio Evidence</span><h3>The Collection</h3></div>
+  
+    <article class="sound-card">
+      <div class="num">01</div>
+      <div class="sound-info">
+        <h2>THE AAAA INCIDENT</h2>
+        <p>An event that science still cannot explain.</p>
+        <audio controls preload="metadata">
+          <source src="audio/01-the-aaaa-incident.m4a">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+    </article>
+    
+
+    <article class="sound-card">
+      <div class="num">02</div>
+      <div class="sound-info">
+        <h2>THE WILILILI</h2>
+        <p>Normal human behavior? Highly questionable.</p>
+        <audio controls preload="metadata">
+          <source src="audio/02-the-wililili.m4a">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+    </article>
+    
+
+    <article class="sound-card">
+      <div class="num">03</div>
+      <div class="sound-info">
+        <h2>HIERARCHICALLY…</h2>
+        <p>The English language was never the same.</p>
+        <audio controls preload="metadata">
+          <source src="audio/03-hierarchically.m4a">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+    </article>
+    
+
+    <article class="sound-card">
+      <div class="num">04</div>
+      <div class="sound-info">
+        <h2>THE PHONE IMITATION</h2>
+        <p>Why simply use the phone when you can become the phone?</p>
+        <audio controls preload="metadata">
+          <source src="audio/04-the-phone-imitation.m4a">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+    </article>
+    
+
+    <article class="sound-card">
+      <div class="num">05</div>
+      <div class="sound-info">
+        <h2>THE DUCK</h2>
+        <p>No context. No explanation. Just… duck.</p>
+        <audio controls preload="metadata">
+          <source src="audio/05-the-duck.m4a">
+          Your browser does not support audio playback.
+        </audio>
+      </div>
+    </article>
+    
+</section>
+
+<section class="stats">
+  <div class="section-title"><span>Final Results</span><h3>Charbel Sound Statistics™</h3></div>
+  <div class="stat"><span>🔊 Total sounds</span><b>5</b></div>
+  <div class="stat"><span>🗣️ Normal human sounds</span><b>0</b></div>
+  <div class="stat"><span>🦆 Duck noises</span><b>1</b></div>
+  <div class="stat"><span>❓ Unexplained noises</span><b>4</b></div>
+  <div class="stat"><span>🤫 Time Charbel should have remained silent</span><b>9917</b></div>
+  <div class="conclusion">
+    <div class="label">Scientific Conclusion</div>
+    <p>Subject demonstrates an alarming tendency to produce unnecessary sounds.<br>
+    Further investigation is strongly recommended.</p>
+    <div class="diagnosis">Diagnosis: Just being Charbel™</div>
+  </div>
+</section>
+
+<div class="footer">CHARBEL AUDIO RESEARCH LAB • CONFIDENTIAL • 2026</div>
+</div>
+</body>
+</html>
