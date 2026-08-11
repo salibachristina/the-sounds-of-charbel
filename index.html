@@ -4,139 +4,685 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Sounds of Charbel™</title>
+
 <style>
-:root {
-  --bg:#090909; --panel:#111; --gold:#d6b36a; --gold2:#f0d99a;
-  --text:#f4f1e8; --muted:#aaa59b; --line:#2a261e;
+:root{
+  --bg:#080808;
+  --panel:#111;
+  --gold:#d7b46a;
+  --gold2:#f3dc9c;
+  --text:#f5f1e7;
+  --muted:#9e9a91;
+  --line:#2a261f;
 }
+
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at top,#17130c 0,#090909 42%,#050505 100%);
-color:var(--text);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
-.wrap{max-width:720px;margin:auto;padding:28px 18px 60px}
-.hero{min-height:82vh;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.kicker{letter-spacing:.28em;color:var(--gold);font:12px Arial,sans-serif;text-transform:uppercase}
-h1{font-size:clamp(42px,12vw,78px);line-height:.92;margin:20px 0 14px;letter-spacing:-.04em}
-.subtitle{color:var(--muted);font:14px Arial,sans-serif;letter-spacing:.08em}
-.btn{display:inline-block;margin:30px auto 0;padding:14px 22px;border:1px solid var(--gold);
-border-radius:999px;color:var(--gold2);text-decoration:none;font:700 12px Arial,sans-serif;
-letter-spacing:.16em;text-transform:uppercase}
-.section-title{text-align:center;margin:30px 0 22px}
-.section-title span{display:block;color:var(--gold);font:11px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px}
-.section-title h3{font-size:30px;margin:0}
-.sound-card{display:flex;gap:16px;background:linear-gradient(145deg,#151515,#0e0e0e);
-border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 10px 30px #0008}
-.num{color:var(--gold);font:12px Arial,sans-serif;letter-spacing:.1em;padding-top:3px;min-width:28px}
-.sound-info{flex:1}
-.sound-info h2{font-size:19px;margin:0 0 6px}
-.sound-info p{color:var(--muted);font:13px Arial,sans-serif;line-height:1.45;margin:0 0 14px}
-audio{width:100%;height:38px;filter:sepia(1) saturate(.5)}
-.stats{margin-top:50px;background:#0d0d0d;border:1px solid var(--line);border-radius:22px;padding:25px 20px}
-.stat{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);
-font:14px Arial,sans-serif}
-.stat:last-child{border-bottom:0}
-.stat b{color:var(--gold2);font-size:16px;text-align:right}
-.conclusion{text-align:center;margin:28px 4px 0;padding-top:24px;border-top:1px solid var(--line)}
-.conclusion .label{color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase}
-.conclusion p{color:#d5d0c5;line-height:1.65;font-size:15px}
-.diagnosis{font-size:21px;color:var(--gold2);font-weight:bold}
-.footer{text-align:center;color:#6e6a62;font:10px Arial,sans-serif;letter-spacing:.14em;margin-top:50px}
-@media(max-width:480px){.sound-card{padding:15px} h1{font-size:48px}}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 50% -10%,#211a0d,#080808 38%,#050505 75%);
+  color:var(--text);
+  font-family:Georgia,"Times New Roman",serif;
+}
+
+.wrap{
+  max-width:720px;
+  margin:auto;
+  padding:0 18px 70px;
+}
+
+.hidden{display:none!important}
+
+.screen{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+}
+
+.hero{
+  text-align:center;
+  width:100%;
+}
+
+.ey,.caseNo{
+  font:10px Arial,sans-serif;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+h1{
+  font-size:clamp(46px,13vw,82px);
+  line-height:.88;
+  letter-spacing:-.055em;
+  margin:18px 0;
+}
+
+.sub{
+  font:13px Arial,sans-serif;
+  color:var(--muted);
+  letter-spacing:.08em;
+  line-height:1.7;
+}
+
+.box{
+  margin:35px auto 22px;
+  padding:23px 18px;
+  max-width:490px;
+  background:#111;
+  border:1px solid var(--line);
+  border-radius:20px;
+  box-shadow:0 18px 55px #000;
+}
+
+.box h2{
+  font-size:24px;
+  margin:10px 0 7px;
+}
+
+.box p,.card p,.desc{
+  font:13px Arial,sans-serif;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+audio{
+  width:100%;
+  height:42px;
+}
+
+.btn{
+  border:1px solid var(--gold);
+  background:none;
+  color:var(--gold2);
+  padding:14px 22px;
+  border-radius:999px;
+  font:700 11px Arial,sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:.25s ease;
+}
+
+.btn:hover{
+  background:var(--gold);
+  color:#080808;
+  transform:translateY(-1px);
+}
+
+.lab{
+  padding-top:30px;
+  animation:fadeIn .45s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.lab-top{
+  text-align:center;
+  margin:20px 0 34px;
+}
+
+.lab-top h2{
+  font-size:38px;
+  margin:9px 0;
+}
+
+.exit-wrap{
+  text-align:left;
+  margin:0 0 18px;
+}
+
+.exit{
+  background:none;
+  border:0;
+  padding:8px 0;
+  color:var(--gold);
+  font:10px Arial,sans-serif;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.exit:hover{
+  color:var(--gold2);
+}
+
+.card{
+  margin:14px 0;
+  padding:20px;
+  background:linear-gradient(145deg,#151515,#0d0d0d);
+  border:1px solid var(--line);
+  border-radius:18px;
+  transition:border-color .25s ease,box-shadow .25s ease;
+}
+
+.card.investigating{
+  border-color:#4a3d25;
+  box-shadow:0 12px 40px #0008;
+}
+
+.card-head{
+  display:flex;
+  gap:15px;
+}
+
+.num{
+  color:var(--gold);
+  font:11px Arial,sans-serif;
+  min-width:30px;
+  padding-top:3px;
+}
+
+.card-content{
+  flex:1;
+  min-width:0;
+}
+
+.card h3{
+  font-size:19px;
+  margin:0 0 7px;
+}
+
+.tag{
+  display:inline-block;
+  border:1px solid #332d22;
+  color:var(--gold);
+  padding:5px 8px;
+  border-radius:999px;
+  font:9px Arial,sans-serif;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.card-audio{
+  margin-top:15px;
+}
+
+.investigate{
+  margin-top:14px;
+  border:1px solid #332d22;
+  background:#0b0b0b;
+  color:var(--gold2);
+  padding:11px 15px;
+  border-radius:999px;
+  font:700 10px Arial,sans-serif;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+
+.investigate:hover{
+  background:#17130d;
+}
+
+.analysis{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s ease,opacity .35s ease;
+  opacity:0;
+}
+
+.analysis-inner{
+  overflow:hidden;
+}
+
+.card.investigating .analysis{
+  grid-template-rows:1fr;
+  opacity:1;
+}
+
+.analysis-content{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+}
+
+.analysis-title{
+  color:var(--gold);
+  font:10px Arial,sans-serif;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:9px;
+}
+
+.analysis-main{
+  color:#d5d0c5;
+  font:13px Arial,sans-serif;
+  line-height:1.6;
+  margin:0 0 18px;
+}
+
+.metrics{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.metric{
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#0e0e0e;
+}
+
+.metric span{
+  font:9px Arial,sans-serif;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#777;
+}
+
+.metric strong{
+  display:block;
+  color:var(--gold2);
+  font-size:19px;
+  margin-top:7px;
+}
+
+.evidence-note{
+  margin-top:14px;
+  padding:15px;
+  border-left:2px solid var(--gold);
+  background:#0d0d0d;
+  color:#bdb7ab;
+  font:12px Arial,sans-serif;
+  line-height:1.5;
+}
+
+.stats{
+  margin-top:50px;
+  background:#0d0d0d;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:25px 20px;
+}
+
+.stats-header{
+  text-align:center;
+  margin:5px 0 18px;
+}
+
+.stats-header h2{
+  font-size:28px;
+  margin:9px 0;
+}
+
+.stat{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+  border-bottom:1px solid var(--line);
+  font:13px Arial,sans-serif;
+}
+
+.stat b{
+  color:var(--gold2);
+  text-align:right;
+}
+
+.con{
+  text-align:center;
+  padding-top:24px;
+  margin-top:15px;
+  border-top:1px solid var(--line);
+}
+
+.diag{
+  font-size:21px;
+  color:var(--gold2);
+  font-weight:bold;
+}
+
+.final{
+  text-align:center;
+  padding:80px 10px 30px;
+}
+
+.final h2{
+  font-size:35px;
+}
+
+.foot{
+  text-align:center;
+  color:#57544e;
+  font:9px Arial,sans-serif;
+  letter-spacing:.16em;
+  margin-top:45px;
+}
+
+@media(max-width:450px){
+  .metrics{grid-template-columns:1fr}
+  .lab-top h2{font-size:34px}
+  .card{padding:17px}
+}
 </style>
 </head>
+
 <body>
 <div class="wrap">
-<section class="hero">
-  <div class="kicker">An exclusive audio collection</div>
-  <h1>THE SOUNDS<br>OF CHARBEL™</h1>
-  <div class="subtitle">Recorded. Analyzed. Unfortunately documented.</div>
-  <a class="btn" href="#sounds">Enter the sound lab</a>
-</section>
 
-<section id="sounds">
-  <div class="section-title"><span>Audio Evidence</span><h3>The Collection</h3></div>
-  
-    <article class="sound-card">
-      <div class="num">01</div>
-      <div class="sound-info">
-        <h2>THE AAAA INCIDENT</h2>
+  <!-- ENTRANCE PAGE -->
+  <section id="home" class="screen">
+    <div class="hero">
+      <div class="ey">Confidential Audio Archive // 001</div>
+
+      <h1>THE SOUNDS<br>OF CHARBEL™</h1>
+
+      <div class="sub">
+        Recorded. Analyzed.<br>
+        Unfortunately documented.
+      </div>
+
+      <div class="box">
+        <div class="caseNo">FIRST EVIDENCE</div>
+        <h2>The AAAAA Incident</h2>
         <p>An event that science still cannot explain.</p>
+
         <audio controls preload="metadata">
-          <source src="01-the-aaaa-incident.m4a">
+          <source src="01-the-aaaa-incident.m4a" type="audio/mp4">
           Your browser does not support audio playback.
         </audio>
       </div>
-    </article>
-    
 
-    <article class="sound-card">
-      <div class="num">02</div>
-      <div class="sound-info">
-        <h2>THE WILILILI</h2>
-        <p>Normal human behavior? Highly questionable.</p>
-        <audio controls preload="metadata">
-          <source src="02-the-wililili.m4a">
-          Your browser does not support audio playback.
-        </audio>
+      <div class="sub" style="font-size:10px;color:#666">
+        Listen to the evidence before proceeding.
       </div>
-    </article>
-    
 
-    <article class="sound-card">
-      <div class="num">03</div>
-      <div class="sound-info">
-        <h2>HIERARCHICALLY…</h2>
-        <p>The English language was never the same.</p>
-        <audio controls preload="metadata">
-          <source src="03-hierarchically.m4a">
-          Your browser does not support audio playback.
-        </audio>
+      <br>
+
+      <button class="btn" id="enterLab">
+        Enter the Sound Lab →
+      </button>
+    </div>
+  </section>
+
+
+  <!-- SOUND LAB: ONE CONTINUOUS PAGE -->
+  <section id="lab" class="lab hidden">
+
+    <div class="exit-wrap">
+      <button class="exit" id="exitLab">← Exit Sound Lab</button>
+    </div>
+
+    <div class="lab-top">
+      <div class="ey">Audio Evidence</div>
+      <h2>The Collection</h2>
+      <div class="sub">
+        Documented incidents.<br>
+        Countless questions left unanswered.
       </div>
-    </article>
-    
+    </div>
 
-    <article class="sound-card">
-      <div class="num">04</div>
-      <div class="sound-info">
-        <h2>THE PHONE IMITATION</h2>
-        <p>Why simply use the phone when you can become the phone?</p>
-        <audio controls preload="metadata">
-          <source src="04-the-phone-imitation.m4a">
-          Your browser does not support audio playback.
-        </audio>
+    <div id="cards"></div>
+
+
+    <!-- STATISTICS REMAIN AT THE BOTTOM -->
+    <section class="stats">
+      <div class="stats-header">
+        <div class="ey">Final Results</div>
+        <h2>Charbel Sound Statistics™</h2>
       </div>
-    </article>
-    
 
-    <article class="sound-card">
-      <div class="num">05</div>
-      <div class="sound-info">
-        <h2>THE DUCK</h2>
-        <p>No context. No explanation. Just… duck.</p>
-        <audio controls preload="metadata">
-          <source src="05-the-duck.m4a">
-          Your browser does not support audio playback.
-        </audio>
+      <div class="stat">
+        <span>🔊 Total sounds</span>
+        <b>5</b>
       </div>
-    </article>
-    
-</section>
 
-<section class="stats">
-  <div class="section-title"><span>Final Results</span><h3>Charbel Sound Statistics™</h3></div>
-  <div class="stat"><span>🔊 Total sounds</span><b>5</b></div>
-  <div class="stat"><span>🗣️ Normal human sounds</span><b>0</b></div>
-  <div class="stat"><span>🦆 Duck noises</span><b>1</b></div>
-  <div class="stat"><span>❓ Unexplained noises</span><b>4</b></div>
-  <div class="stat"><span>🤫 Time Charbel should have remained silent</span><b>9,917 sec</b></div>
-  <div class="conclusion">
-    <div class="label">Scientific Conclusion</div>
-    <p>Subject demonstrates an alarming tendency to produce unnecessary sounds.<br>
-    Further investigation is strongly recommended.</p>
-    <div class="diagnosis">Diagnosis: Just being Charbel™</div>
-  </div>
-</section>
+      <div class="stat">
+        <span>🗣️ Normal human sounds</span>
+        <b>0</b>
+      </div>
 
-<div class="footer">CHARBEL AUDIO RESEARCH LAB • CONFIDENTIAL • 2026</div>
+      <div class="stat">
+        <span>🦆 Duck noises</span>
+        <b>1</b>
+      </div>
+
+      <div class="stat">
+        <span>❓ Unexplained noises</span>
+        <b>4</b>
+      </div>
+
+      <div class="stat">
+        <span>🤫 Time Charbel should have remained silent</span>
+        <b>9,917 sec</b>
+      </div>
+
+      <div class="con">
+        <div class="ey">Scientific Conclusion</div>
+
+        <p>
+          Subject demonstrates an alarming tendency to produce unnecessary sounds.<br>
+          Further investigation is strongly recommended.
+        </p>
+
+        <div class="diag">
+          Diagnosis: Just being Charbel™
+        </div>
+      </div>
+    </section>
+
+    <div class="final">
+      <div class="ey">Investigation Complete</div>
+      <h2>Congratulations.</h2>
+      <p class="sub">
+        You have successfully survived the documented sounds of Charbel.
+      </p>
+
+      <div style="color:var(--gold);font:10px Arial,sans-serif;letter-spacing:.16em">
+        ACHIEVEMENT UNLOCKED: CHARBEL SURVIVOR 🏆
+      </div>
+    </div>
+
+    <div class="foot">
+      CHARBEL AUDIO RESEARCH LAB • CONFIDENTIAL • 2026
+    </div>
+
+  </section>
+
 </div>
+
+
+<script>
+const sounds = [
+  {
+    no:"01",
+    title:"THE AAAA INCIDENT",
+    file:"01-the-aaaa-incident.m4a",
+    tag:"UNEXPLAINED",
+    description:"An event that science still cannot explain.",
+    analysis:"Researchers attempted to determine the cause of this sound. Researchers gave up.",
+    metrics:[
+      ["Humanity","0%"],
+      ["Explanation","0%"],
+      ["Volume","Questionable"],
+      ["Necessity","Debatable"]
+    ]
+  },
+  {
+    no:"02",
+    title:"THE WILILILI",
+    file:"02-the-wililili.m4a",
+    tag:"CHARBEL BEHAVIOR",
+    description:"A sound that appeared without warning and without permission.",
+    analysis:"The subject appears to have temporarily forgotten how normal human communication works.",
+    metrics:[
+      ["Normality","12%"],
+      ["Confidence","100%"],
+      ["Purpose","Unknown"],
+      ["Repeatability","High"]
+    ]
+  },
+  {
+    no:"03",
+    title:"HIERARCHICALLY…",
+    file:"03-hierarchically.m4a",
+    tag:"LINGUISTIC INCIDENT",
+    description:"The English language was never the same.",
+    analysis:"A brave attempt at pronunciation. The dictionary has requested legal representation.",
+    metrics:[
+      ["Pronunciation","???"],
+      ["Confidence","97%"],
+      ["Dictionary damage","Severe"],
+      ["Recovery","Pending"]
+    ]
+  },
+  {
+    no:"04",
+    title:"THE PHONE IMITATION",
+    file:"04-the-phone-imitation.m4a",
+    tag:"MIMICRY",
+    description:"Why simply use the phone when you can become the phone?",
+    analysis:"The subject demonstrated an unnecessary but surprisingly committed recreation of a telephone sound.",
+    metrics:[
+      ["Accuracy","94%"],
+      ["Necessity","0%"],
+      ["Commitment","100%"],
+      ["Why?","YES"]
+    ]
+  },
+  {
+    no:"05",
+    title:"THE DUCK",
+    file:"05-the-duck.m4a",
+    tag:"DUCK",
+    description:"No context. No explanation. Just… duck.",
+    analysis:"The investigation remains inconclusive. Experts agree that it was, in fact, very duck-like.",
+    metrics:[
+      ["Humanity","0%"],
+      ["Duck authenticity","97%"],
+      ["Explanation","0%"],
+      ["Quack necessity","0%"]
+    ]
+  }
+];
+
+const home = document.getElementById("home");
+const lab = document.getElementById("lab");
+const cards = document.getElementById("cards");
+const enterLab = document.getElementById("enterLab");
+const exitLab = document.getElementById("exitLab");
+
+let labScrollPosition = 0;
+
+function renderCards(){
+  cards.innerHTML = sounds.map((sound,index) => `
+    <article class="card" data-index="${index}">
+
+      <div class="card-head">
+        <div class="num">${sound.no}</div>
+
+        <div class="card-content">
+          <h3>${sound.title}</h3>
+
+          <p>${sound.description}</p>
+
+          <span class="tag">${sound.tag}</span>
+
+          <div class="card-audio">
+            <audio controls preload="metadata">
+              <source src="${sound.file}" type="audio/mp4">
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+
+          <button class="investigate" type="button">
+            🔎 Investigation
+          </button>
+
+          <div class="analysis">
+            <div class="analysis-inner">
+              <div class="analysis-content">
+
+                <div class="analysis-title">
+                  Investigation Report
+                </div>
+
+                <p class="analysis-main">
+                  ${sound.analysis}
+                </p>
+
+                <div class="metrics">
+                  ${sound.metrics.map(metric => `
+                    <div class="metric">
+                      <span>${metric[0]}</span>
+                      <strong>${metric[1]}</strong>
+                    </div>
+                  `).join("")}
+                </div>
+
+                <div class="evidence-note">
+                  ⚠️ <b>Evidence note:</b>
+                  This recording has been officially archived for future investigation.
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </article>
+  `).join("");
+}
+
+function showLab(){
+  home.classList.add("hidden");
+  lab.classList.remove("hidden");
+
+  // Start the lab at its top when entering from the entrance.
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function showHome(){
+  // Stop every audio element before leaving.
+  document.querySelectorAll("audio").forEach(audio => {
+    audio.pause();
+  });
+
+  lab.classList.add("hidden");
+  home.classList.remove("hidden");
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+enterLab.addEventListener("click", showLab);
+exitLab.addEventListener("click", showHome);
+
+cards.addEventListener("click", event => {
+  const button = event.target.closest(".investigate");
+  if(!button) return;
+
+  const card = button.closest(".card");
+  if(!card) return;
+
+  const wasOpen = card.classList.contains("investigating");
+
+  // Only change the clicked investigation.
+  // The browser therefore keeps the user at exactly the same scroll position.
+  card.classList.toggle("investigating");
+
+  button.textContent = wasOpen
+    ? "🔎 Investigation"
+    : "✕ Close Investigation";
+});
+
+renderCards();
+</script>
+
 </body>
 </html>
